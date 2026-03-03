@@ -1,71 +1,129 @@
-  export default function Footer() {
-    return (
-      <footer className="mt-auto">
-        <div className="h-32 bg-gradient-to-b from-gray-50 to-gray-200 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-300/50 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 via-blue-400 to-purple-500" />
-        </div>
-        <div className="bg-gray-900 text-white">
-          <div className="max-w-7xl mx-auto px-8 py-12">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+export default function Footer() {
+  return (
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800&family=DM+Sans:wght@400;500;600&display=swap');
+        .footer-logo { font-family: 'Fraunces', serif; }
+        .footer-body { font-family: 'DM Sans', sans-serif; }
+        .footer-link {
+          color: #888;
+          text-decoration: none;
+          font-size: 13px;
+          transition: color 0.2s;
+          display: block;
+        }
+        .footer-link:hover { color: #fff; }
+        .social-btn {
+          width: 36px;
+          height: 36px;
+          border: 1px solid #333;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.2s;
+          font-size: 11px;
+          font-weight: 700;
+          color: #888;
+          text-decoration: none;
+        }
+        .social-btn:hover {
+          border-color: #fff;
+          color: #fff;
+          transform: translateY(-2px);
+        }
+      `}</style>
+      <footer>
+        {/* Fade bridge */}
+        <div style={{
+          height: "60px",
+          background: "linear-gradient(to bottom, #fafaf8, #0a0a0a)",
+        }} />
+
+        <div style={{ background: "#0a0a0a" }}>
+          <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "48px 32px 40px" }}>
+
+            {/* Top row */}
+            <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: "48px", marginBottom: "48px" }}>
+              {/* Brand */}
               <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 bg-purple-600 rounded-lg">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      className="text-white"
-                    >
+                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "16px" }}>
+                  <div style={{
+                    width: "32px", height: "32px",
+                    background: "#fff",
+                    borderRadius: "8px",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                  }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" strokeWidth="2.5">
                       <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
                       <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
                     </svg>
                   </div>
-                  <span className="text-xl font-bold">Duguilan.mn</span>
+                  <span className="footer-logo" style={{ fontSize: "17px", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em" }}>
+                    Duguilan.mn
+                  </span>
                 </div>
-                <p className="text-gray-400 text-sm">
-                  Your gateway to discovering events and experiences across Mongolia.
+                <p style={{ color: "#666", fontSize: "13px", lineHeight: 1.7, maxWidth: "240px" }}>
+                  Your gateway to discovering clubs, events, and experiences across Mongolia.
                 </p>
+                <div style={{ display: "flex", gap: "8px", marginTop: "20px" }}>
+                  <a className="social-btn">FB</a>
+                  <a className="social-btn">IG</a>
+                  <a className="social-btn">TW</a>
+                </div>
               </div>
+
+              {/* Quick links */}
               <div>
-                <h3 className="font-semibold mb-4">Quick Links</h3>
-                <ul className="space-y-2 text-gray-400 text-sm">
-                  <li><a className="hover:text-purple-400 transition-colors cursor-pointer">Home</a></li>
-                  <li><a className="hover:text-purple-400 transition-colors cursor-pointer">Categories</a></li>
-                  <li><a className="hover:text-purple-400 transition-colors cursor-pointer">Events</a></li>
-                  <li><a className="hover:text-purple-400 transition-colors cursor-pointer">About Us</a></li>
-                </ul>
+                <h3 style={{ color: "#fff", fontSize: "12px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "16px" }}>
+                  Navigate
+                </h3>
+                <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                  {["Home", "Categories", "Events", "About Us"].map(l => (
+                    <a key={l} href="#" className="footer-link">{l}</a>
+                  ))}
+                </div>
               </div>
+
+              {/* Contact */}
               <div>
-                <h3 className="font-semibold mb-4">Contact</h3>
-                <ul className="space-y-2 text-gray-400 text-sm">
-                  <li>Ulaanbaatar, Mongolia</li>
-                  <li>info@duguilan.mn</li>
-                  <li>+976 99116769</li>
-                </ul>
+                <h3 style={{ color: "#fff", fontSize: "12px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "16px" }}>
+                  Contact
+                </h3>
+                <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                  <span style={{ color: "#666", fontSize: "13px" }}>Ulaanbaatar, Mongolia</span>
+                  <span style={{ color: "#666", fontSize: "13px" }}>info@duguilan.mn</span>
+                  <span style={{ color: "#666", fontSize: "13px" }}>+976 99116769</span>
+                </div>
               </div>
             </div>
-            <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-gray-400 text-sm">
-                © 2026 Duguilan.mn - School Project
+
+            {/* Bottom row */}
+            <div style={{
+              borderTop: "1px solid #1e1e1e",
+              paddingTop: "24px",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}>
+              <p style={{ color: "#444", fontSize: "12px" }}>
+                © 2026 Duguilan.mn — School Project
               </p>
-              <div className="flex gap-4">
-                <div className="w-8 h-8 bg-gray-800 hover:bg-purple-600 rounded-full flex items-center justify-center cursor-pointer transition-colors">
-                  <span className="text-xs">FB</span>
-                </div>
-                <div className="w-8 h-8 bg-gray-800 hover:bg-purple-600 rounded-full flex items-center justify-center cursor-pointer transition-colors">
-                  <span className="text-xs">IG</span>
-                </div>
-                <div className="w-8 h-8 bg-gray-800 hover:bg-purple-600 rounded-full flex items-center justify-center cursor-pointer transition-colors">
-                  <span className="text-xs">TW</span>
-                </div>
-              </div>
+              <span style={{
+                fontSize: "11px",
+                color: "#333",
+                fontWeight: 600,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+              }}>
+                Made in Mongolia 🇲🇳
+              </span>
             </div>
+
           </div>
         </div>
       </footer>
-    );
-  }
+    </>
+  );
+}

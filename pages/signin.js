@@ -20,7 +20,7 @@ export default function SignInForm() {
           position: "absolute",
           inset: 0,
           borderRadius: "20px",
-          background: "#7c3aed",
+          background: "#111",
           transform: "translate(6px, 8px)",
           zIndex: 0,
         }} />
@@ -28,10 +28,10 @@ export default function SignInForm() {
           position: "relative",
           zIndex: 1,
           borderRadius: "20px",
-          border: "2.5px solid #7c3aed",
+          border: "2.5px solid #111",
           background: "rgba(255,255,255,0.97)",
           padding: "40px 36px 36px",
-          boxShadow: "0 4px 32px rgba(124, 58, 237, 0.10)",
+          boxShadow: "0 4px 32px rgba(0,0,0,0.10)",
         }}>
           <a href="/page" style={{ display: "flex", justifyContent: "center", marginBottom: "18px" }}>
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#374151" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -75,7 +75,7 @@ export default function SignInForm() {
                 boxSizing: "border-box",
                 transition: "border-color 0.2s",
               }}
-              onFocus={(e) => e.target.style.borderColor = "#7c3aed"}
+              onFocus={(e) => e.target.style.borderColor = "#111"}
               onBlur={(e) => e.target.style.borderColor = "#e5e7eb"}
             />
             <input
@@ -95,7 +95,7 @@ export default function SignInForm() {
                 boxSizing: "border-box",
                 transition: "border-color 0.2s",
               }}
-              onFocus={(e) => e.target.style.borderColor = "#7c3aed"}
+              onFocus={(e) => e.target.style.borderColor = "#111"}
               onBlur={(e) => e.target.style.borderColor = "#e5e7eb"}
             />
             <button
@@ -103,7 +103,7 @@ export default function SignInForm() {
               style={{
                 width: "100%",
                 padding: "13px",
-                background: "#7c3aed",
+                background: "#111",
                 color: "#fff",
                 border: "none",
                 borderRadius: "10px",
@@ -113,8 +113,8 @@ export default function SignInForm() {
                 transition: "background 0.2s",
                 marginTop: "2px",
               }}
-              onMouseEnter={(e) => e.target.style.background = "#6d28d9"}
-              onMouseLeave={(e) => e.target.style.background = "#7c3aed"}
+              onMouseEnter={(e) => e.target.style.background = "#333"}
+              onMouseLeave={(e) => e.target.style.background = "#111"}
             >
               Continue
             </button>
@@ -129,7 +129,7 @@ export default function SignInForm() {
               style={{
                 width: "100%",
                 padding: "13px",
-                background: "#7c3aed",
+                background: "#1877F2",
                 color: "#fff",
                 border: "none",
                 borderRadius: "10px",
@@ -142,8 +142,8 @@ export default function SignInForm() {
                 gap: "10px",
                 transition: "background 0.2s",
               }}
-              onMouseEnter={(e) => e.currentTarget.style.background = "#6d28d9"}
-              onMouseLeave={(e) => e.currentTarget.style.background = "#7c3aed"}
+              onMouseEnter={(e) => e.currentTarget.style.background = "#166fe5"}
+              onMouseLeave={(e) => e.currentTarget.style.background = "#1877F2"}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
