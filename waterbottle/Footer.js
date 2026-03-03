@@ -49,17 +49,7 @@ export default function Footer() {
               {/* Brand */}
               <div>
                 <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "16px" }}>
-                  <div style={{
-                    width: "32px", height: "32px",
-                    background: "#fff",
-                    borderRadius: "8px",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                  }}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" strokeWidth="2.5">
-                      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-                    </svg>
-                  </div>
+                  <img src="/assets/logo_white.png" alt="Logo" width={32} height={32} style={{ borderRadius: "8px" }} />
                   <span className="footer-logo" style={{ fontSize: "17px", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em" }}>
                     Duguilan.mn
                   </span>
