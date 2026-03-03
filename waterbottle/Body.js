@@ -101,9 +101,10 @@ export default function Body() {
               fontSize: "clamp(2.6rem, 5vw, 4rem)", fontWeight: 800, lineHeight: 1.2,
               color: "#0a0a0a", letterSpacing: "-0.03em", marginBottom: "12px",
             }}>
-              Discover<br />
-              <span style={{ color: "#888", fontStyle: "italic" }}>every club,</span><br />
-              sign up fast.
+              <span style={{ color: "#333", fontStyle: "italic" }}>Түүхээ</span><br />
+              <span style={{ color: "#888", fontStyle: "italic" }}>эхлүүл,</span><br />
+              <span style={{ color: "#333", fontStyle: "italic" }}>тэмүүлэлдээ</span><br />
+              <span style={{ color: "#888", fontStyle: "italic" }}>нэгд.</span><br />
             </h1>
 
             <p className="body-sans hero-animate-3" style={{
@@ -152,7 +153,7 @@ export default function Body() {
             </div>
 
             {/* Map */}
-            <div style={{ height: "320px", width: "100%" }}>
+            <div style={{ height: "320px", width: "100%", position: "relative", zIndex: 0 }}>
               <MapComponent />
             </div>
 

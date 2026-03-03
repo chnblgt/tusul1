@@ -56,7 +56,7 @@ export default function SignUpForm() {
 
           {/* Logo */}
           <a href="/page" style={{ display: "flex", justifyContent: "center", marginBottom: "18px" }}>
-            <img src="/assets/logo.png" alt="Logo" width={48} height={48} style={{ borderRadius: "10px" }} />
+            <img src="/assets/logo.png" alt="Logo" width={80} height={80} style={{ borderRadius: "10px" }} />
           </a>
 
           {/* Title */}
@@ -89,7 +89,7 @@ export default function SignUpForm() {
               </label>
               <input
                 type="text"
-                placeholder="e.g. john_doe"
+                placeholder="e.g. Erdenebold Erdenetugs"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 style={{
@@ -117,7 +117,7 @@ export default function SignUpForm() {
               <div style={{ position: "relative" }}>
                 <input
                   type="email"
-                  placeholder="you@email.com"
+                  placeholder="your@email.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   style={{

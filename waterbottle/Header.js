@@ -57,7 +57,7 @@ export default function Header() {
         borderBottom: "1px solid #f0f0f0",
         position: "sticky",
         top: 0,
-        zIndex: 50,
+        zIndex: 1000,
       }}>
         <div style={{
           maxWidth: "1200px",
