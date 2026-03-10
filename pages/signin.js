@@ -20,7 +20,7 @@ export default function SignInForm() {
           position: "absolute",
           inset: 0,
           borderRadius: "20px",
-          background: "#111",
+          background: "#a78bfa",  // was #111
           transform: "translate(6px, 8px)",
           zIndex: 0,
         }} />
@@ -28,10 +28,10 @@ export default function SignInForm() {
           position: "relative",
           zIndex: 1,
           borderRadius: "20px",
-          border: "2.5px solid #111",
+          border: "2.5px solid #a78bfa",  // was #111
           background: "rgba(255,255,255,0.97)",
           padding: "40px 36px 36px",
-          boxShadow: "0 4px 32px rgba(0,0,0,0.10)",
+          boxShadow: "0 4px 32px rgba(167,139,250,0.15)",  // was black
         }}>
           {/* Logo */}
           <a href="/page" style={{ display: "flex", justifyContent: "center", marginBottom: "18px" }}>
@@ -101,21 +101,27 @@ export default function SignInForm() {
               style={{
                 width: "100%",
                 padding: "13px",
-                background: "#111",
+                background: "#7c3aed",
                 color: "#fff",
                 border: "none",
                 borderRadius: "10px",
                 fontSize: "14px",
                 fontWeight: "600",
                 cursor: "pointer",
-                transition: "background 0.2s",
+                transition: "background 0.1s",
                 marginTop: "2px",
               }}
-              onMouseEnter={(e) => e.target.style.background = "#333"}
-              onMouseLeave={(e) => e.target.style.background = "#111"}
+              onMouseEnter={(e) => e.target.style.background = "#a78bfa"}
+              onMouseLeave={(e) => e.target.style.background = "#7c3aed"}
             >
               Continue
             </button>
+            <p className="text-center text-sm text-gray-400 mt-1 pr-2">
+              Don't have an account?
+              <a href="/signup" className="text-purple-700 pl-2 font-semibold hover:underline">
+                Sign up
+              </a>
+            </p>
           </form>
           <div style={{ display: "flex", alignItems: "center", gap: "12px", margin: "22px 0" }}>
             <div style={{ flex: 1, height: "1px", background: "#e5e7eb" }} />

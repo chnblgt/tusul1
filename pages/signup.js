@@ -33,12 +33,12 @@ export default function SignUpForm() {
     }}>
       <div style={{ position: "relative", width: "100%", maxWidth: "420px" }}>
 
-        {/* Black offset shadow */}
+        {/* Purple offset shadow */}
         <div style={{
           position: "absolute",
           inset: 0,
           borderRadius: "20px",
-          background: "#111",
+          background: "#a78bfa",
           transform: "translate(6px, 8px)",
           zIndex: 0,
         }} />
@@ -48,10 +48,10 @@ export default function SignUpForm() {
           position: "relative",
           zIndex: 1,
           borderRadius: "20px",
-          border: "2.5px solid #111",
+          border: "2.5px solid #a78bfa",
           background: "rgba(255,255,255,0.97)",
           padding: "40px 36px 36px",
-          boxShadow: "0 4px 32px rgba(0,0,0,0.10)",
+          boxShadow: "0 4px 32px rgba(167,139,250,0.15)",
         }}>
 
           {/* Logo */}
@@ -104,7 +104,7 @@ export default function SignUpForm() {
                   boxSizing: "border-box",
                   transition: "border-color 0.2s",
                 }}
-                onFocus={(e) => e.target.style.borderColor = "#111"}
+                onFocus={(e) => e.target.style.borderColor = "#a78bfa"}
                 onBlur={(e) => e.target.style.borderColor = "#e5e7eb"}
               />
             </div>
@@ -132,7 +132,7 @@ export default function SignUpForm() {
                     boxSizing: "border-box",
                     transition: "border-color 0.2s",
                   }}
-                  onFocus={(e) => e.target.style.borderColor = "#111"}
+                  onFocus={(e) => e.target.style.borderColor = "#a78bfa"}
                   onBlur={(e) => e.target.style.borderColor = "#e5e7eb"}
                 />
                 <svg style={{ position: "absolute", left: "14px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}
@@ -166,7 +166,7 @@ export default function SignUpForm() {
                     boxSizing: "border-box",
                     transition: "border-color 0.2s",
                   }}
-                  onFocus={(e) => e.target.style.borderColor = "#111"}
+                  onFocus={(e) => e.target.style.borderColor = "#a78bfa"}
                   onBlur={(e) => e.target.style.borderColor = "#e5e7eb"}
                 />
                 <button
@@ -222,7 +222,7 @@ export default function SignUpForm() {
                     transition: "border-color 0.2s",
                   }}
                   onFocus={(e) => {
-                    if (!passwordsMismatch && !passwordsMatch) e.target.style.borderColor = "#111";
+                    if (!passwordsMismatch && !passwordsMatch) e.target.style.borderColor = "#a78bfa";
                   }}
                   onBlur={(e) => {
                     if (!passwordsMismatch && !passwordsMatch) e.target.style.borderColor = "#e5e7eb";
@@ -261,7 +261,7 @@ export default function SignUpForm() {
               style={{
                 width: "100%",
                 padding: "13px",
-                background: "#111",
+                background: "#7c3aed",
                 color: "#fff",
                 border: "none",
                 borderRadius: "10px",
@@ -271,8 +271,8 @@ export default function SignUpForm() {
                 transition: "background 0.2s",
                 marginTop: "4px",
               }}
-              onMouseEnter={(e) => e.currentTarget.style.background = "#333"}
-              onMouseLeave={(e) => e.currentTarget.style.background = "#111"}
+              onMouseEnter={(e) => e.currentTarget.style.background = "#a78bfa"}
+              onMouseLeave={(e) => e.currentTarget.style.background = "#7c3aed"}
             >
               Create Account
             </button>
@@ -346,7 +346,7 @@ export default function SignUpForm() {
           {/* Sign in link */}
           <p style={{ textAlign: "center", marginTop: "20px", fontSize: "13px", color: "#9ca3af" }}>
             Already have an account?{" "}
-            <a href="/signin" style={{ color: "#111", fontWeight: "600", textDecoration: "none" }}
+            <a href="/signin" style={{ color: "#7c3aed", fontWeight: "600", textDecoration: "none" }}
               onMouseEnter={(e) => e.target.style.textDecoration = "underline"}
               onMouseLeave={(e) => e.target.style.textDecoration = "none"}
             >

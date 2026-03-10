@@ -106,20 +106,13 @@ export default function Body() {
               <span style={{ color: "#333", fontStyle: "italic" }}>тэмүүлэлдээ</span><br />
               <span style={{ color: "#888", fontStyle: "italic" }}>нэгд.</span><br />
             </h1>
-
-            <p className="body-sans hero-animate-3" style={{
-              fontSize: "16px", color: "#666", lineHeight: 1.7, maxWidth: "380px", marginBottom: "36px",
-            }}>
-              Find and join clubs, events, and activities happening at your school in Mongolia.
-            </p>
-
             <div className="hero-animate-3" style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
               <a href="/page1" className="hero-cta">Browse Clubs</a>
               <a href="/signup" className="hero-secondary">Create Account</a>
             </div>
 
             <div style={{ display: "flex", gap: "36px", marginTop: "48px", paddingTop: "36px", borderTop: "1px solid #ebebeb" }}>
-              {[["12+", "Club types"], ["100+", "Members"], ["Free", "To join"]].map(([num, label]) => (
+              {[["6+", "Club types"], ["5+", "Members"], ["Free", "To join"]].map(([num, label]) => (
                 <div key={label}>
                   <div className="stat-num">{num}</div>
                   <div className="stat-label">{label}</div>
