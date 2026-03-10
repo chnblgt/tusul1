@@ -4,12 +4,11 @@ const MOCK_USER = {
   name: "Bat-Erdene Gantulga",
   username: "baterdenee",
   avatar: null,
-  bio: "Designer & developer based in Ulaanbaatar. Passionate about Mongolian culture and digital experiences.",
+  bio: "Cotton picker.",
   location: "Ulaanbaatar, Mongolia",
-  website: "https://baterdenee.mn",
-  email: "bat@baterdenee.mn",
-  phone: "+976 9911 2233",
-  joinedDate: "January 2024",
+  email: "Bold12IZQ@gmail.com",
+  phone: "+976 911",
+  joinedDate: "May 2026",
 };
 
 const MOCK_CLUBS = [
