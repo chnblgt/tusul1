@@ -495,10 +495,7 @@ export default function ProfilePage({ user = MOCK_USER }) {
             {[
               { key: "name", label: "Full Name", type: "text" },
               { key: "username", label: "Username", type: "text" },
-              { key: "email", label: "Email", type: "email" },
               { key: "phone", label: "Phone", type: "text" },
-              { key: "location", label: "Location", type: "text" },
-              { key: "website", label: "Website", type: "url" },
             ].map(({ key, label, type }) => (
               <div className="pp-field" key={key}>
                 <label className="pp-label">{label}</label>
