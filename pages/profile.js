@@ -12,14 +12,13 @@ const MOCK_USER = {
 };
 
 const MOCK_CLUBS = [
-  { id: 1, name: "Naadam Heritage Club", category: "Culture", members: 340, enrolled: true, color: "#e8f4e8", accent: "#2d7a2d", icon: "🏹" },
-  { id: 2, name: "UB Photography Circle", category: "Arts", members: 218, enrolled: true, color: "#f0eeff", accent: "#5a3fcf", icon: "📷" },
-  { id: 3, name: "Mongolian Hikers", category: "Outdoors", members: 892, enrolled: false, color: "#fff4e6", accent: "#c7560a", icon: "⛰️" },
-  { id: 4, name: "Tech Builders MN", category: "Technology", members: 155, enrolled: true, color: "#e6f3ff", accent: "#1a6bb5", icon: "💻" },
-  { id: 5, name: "Ulaanbaatar Book Club", category: "Literature", members: 74, enrolled: false, color: "#fff0f3", accent: "#b52150", icon: "📚" },
+  { id: 1, name: "Naadam Heritage Club", category: "Culture", members: 340, enrolled: true, color: "#f0fdf4", accent: "#22c55e" },
+  { id: 2, name: "UB Photography Circle", category: "Arts", members: 218, enrolled: true, color: "#faf5ff", accent: "#a855f7" },
+  { id: 3, name: "Mongolian Hikers", category: "Outdoors", members: 892, enrolled: false, color: "#fff7ed", accent: "#f97316" },
+  { id: 4, name: "Tech Builders MN", category: "Technology", members: 155, enrolled: true, color: "#eff6ff", accent: "#3b82f6" },
+  { id: 5, name: "Ulaanbaatar Book Club", category: "Literature", members: 74, enrolled: false, color: "#fef2f2", accent: "#ef4444" },
 ];
 
-// ✏️ Paste any YouTube video ID here (the part after ?v=)
 const BANNER_VIDEO_ID = "QRms3dr_lYM";
 
 function getInitials(name) {
@@ -45,40 +44,33 @@ export default function ProfilePage({ user = MOCK_USER }) {
   const enrolledClubs = clubs.filter((c) => c.enrolled);
   const followedClubs = clubs.filter((c) => !c.enrolled);
 
-  // YouTube embed URL: autoplay + loop + mute + no controls + no branding
   const ytSrc = `https://www.youtube.com/embed/${BANNER_VIDEO_ID}?autoplay=1&loop=1&mute=1&playlist=${BANNER_VIDEO_ID}&controls=0&showinfo=0&modestbranding=1&rel=0&disablekb=1&fs=0`;
 
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
 
         @keyframes pp-fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes pp-slideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
         .pp-root {
           min-height: 100vh;
-          background: #f7f6f3;
-          font-family: 'DM Sans', sans-serif;
+          background: #fff;
+          font-family: 'Lora', serif;
         }
-        .pp-root *, .pp-root *::before, .pp-root *::after {
-          box-sizing: border-box;
-        }
+        .pp-root *, .pp-root *::before, .pp-root *::after { box-sizing: border-box; }
 
-        /* ── Banner ── */
+        /* Banner */
         .pp-banner {
-          height: 220px;
+          height: 280px;
           position: relative;
-          background: #111;
-          overflow: hidden; /* clips the oversized iframe */
+          background: #0d0118;
+          overflow: hidden;
         }
-        /* iframe is scaled up + centered to hide letterbox bars */
         .pp-banner-iframe {
           position: absolute;
-          /* 16:9 ratio trick: make iframe 100vw wide, height = 100vw * (9/16)      */
-          /* Then scale UP by 1.5x so black letterbox bars are pushed off-screen     */
-          top: 50%;
-          left: 50%;
+          top: 50%; left: 50%;
           width: 100vw;
           height: calc(100vw * 9 / 16);
           min-height: 400%;
@@ -86,23 +78,18 @@ export default function ProfilePage({ user = MOCK_USER }) {
           border: none;
           pointer-events: none;
         }
-        /* Back button */
         .pp-back-btn {
           position: absolute;
-          top: 16px;
-          left: 20px;
+          top: 18px; left: 22px;
           z-index: 10;
-          display: flex;
-          align-items: center;
-          gap: 7px;
-          font-family: 'DM Sans', sans-serif;
-          font-size: 13px;
-          font-weight: 600;
+          display: flex; align-items: center; gap: 7px;
+          font-family: 'Lora', serif;
+          font-size: 13px; font-weight: 600;
           color: #fff;
-          background: rgba(0,0,0,0.35);
-          border: 1px solid rgba(255,255,255,0.18);
-          backdrop-filter: blur(8px);
-          border-radius: 8px;
+          background: rgba(26,5,51,0.5);
+          border: 1px solid rgba(255,255,255,0.15);
+          backdrop-filter: blur(10px);
+          border-radius: 7px;
           padding: 7px 14px;
           cursor: pointer;
           text-decoration: none;
@@ -110,226 +97,249 @@ export default function ProfilePage({ user = MOCK_USER }) {
           line-height: 1;
         }
         .pp-back-btn:hover {
-          background: rgba(0,0,0,0.55);
+          background: rgba(124,58,237,0.6);
           transform: translateY(-1px);
         }
-
-        /* dark gradient so content below stays readable */
         .pp-banner-overlay {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(
-            to bottom,
-            rgba(0,0,0,0.08) 0%,
-            rgba(0,0,0,0.45) 100%
-          );
-          pointer-events: none;
-          z-index: 1;
+          position: absolute; inset: 0;
+          background: linear-gradient(to bottom, rgba(13,1,24,0.15) 0%, rgba(13,1,24,0.55) 100%);
+          pointer-events: none; z-index: 1;
         }
 
         .pp-body {
           max-width: 900px;
           margin: 0 auto;
-          padding: 0 28px 80px;
+          padding: 0 48px 120px;
         }
 
         .pp-avatar-row {
-          display: flex;
-          align-items: flex-end;
+          display: flex; align-items: flex-end;
           justify-content: space-between;
-          margin-top: -48px;
-          padding-bottom: 20px;
-          position: relative;
-          z-index: 10;
+          margin-top: -56px;
+          padding-bottom: 32px;
+          position: relative; z-index: 10;
         }
         .pp-avatar {
-          width: 96px; height: 96px;
+          width: 120px; height: 120px;
           border-radius: 50%;
-          border: 5px solid #f7f6f3;
-          background: #111;
+          border: 5px solid #fff;
+          background: #1a0533;
           color: #fff;
-          font-family: 'Fraunces', serif;
-          font-size: 28px; font-weight: 800;
+          font-family: 'Playfair Display', serif;
+          font-size: 36px; font-weight: 800;
           display: flex; align-items: center; justify-content: center;
           overflow: hidden;
-          box-shadow: 0 4px 24px rgba(0,0,0,0.14);
+          box-shadow: 0 8px 32px rgba(26,5,51,0.18);
           flex-shrink: 0;
-          position: relative;
-          z-index: 10;
+          position: relative; z-index: 10;
         }
         .pp-avatar img { width: 100%; height: 100%; object-fit: cover; }
 
         .pp-edit-btn {
-          font-family: 'DM Sans', sans-serif;
+          font-family: 'Lora', serif;
           font-size: 13px; font-weight: 600;
-          padding: 8px 18px; border-radius: 8px;
-          border: 1.5px solid #ddd;
-          background: #fff; color: #333;
+          padding: 12px 24px; border-radius: 9px;
+          border: 2px solid rgba(124,58,237,0.4);
+          background: #fff; color: #7c3aed; background: #f0ebff;
           cursor: pointer;
-          transition: border-color 0.2s, background 0.2s, transform 0.15s;
+          transition: border-color 0.2s, background 0.2s, transform 0.15s, box-shadow 0.2s;
           display: flex; align-items: center; gap: 6px;
-          margin-bottom: 4px; line-height: 1;
+          margin-bottom: 6px; line-height: 1;
         }
-        .pp-edit-btn:hover { border-color: #aaa; background: #fafafa; transform: translateY(-1px); }
+        .pp-edit-btn:hover {
+          border-color: #7c3aed; background: #f0ebff;
+          background: #f8f4ff;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 12px rgba(124,58,237,0.12);
+        }
 
         .pp-name {
-          font-family: 'Fraunces', serif;
-          font-size: 22px; font-weight: 800;
-          color: #0a0a0a; letter-spacing: -0.03em; margin: 0;
+          font-family: 'Playfair Display', serif;
+          font-size: 42px; font-weight: 800;
+          color: #1a0533; letter-spacing: -0.04em; margin: 0;
         }
-        .pp-username { font-size: 13.5px; color: #999; font-weight: 500; margin-top: 2px; }
-        .pp-bio { font-size: 13.5px; color: #666; line-height: 1.65; margin-top: 10px; max-width: 480px; }
+        .pp-username { font-size: 18px; color: #9879d4; font-weight: 500; margin-top: 3px; }
+        .pp-bio { font-size: 18px; color: #666; line-height: 1.7; margin-top: 12px; max-width: 480px; }
 
-        .pp-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+        .pp-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
         .pp-meta-pill {
           display: flex; align-items: center; gap: 5px;
-          font-size: 12.5px; color: #777; font-weight: 500;
-          background: #fff; border: 1px solid #e8e8e8;
-          border-radius: 20px; padding: 4px 10px;
+          font-size: 15px; color: #7c3aed; font-weight: 500;
+          background: #f8f4ff;
+          border: 1px solid rgba(124,58,237,0.12);
+          border-radius: 20px; padding: 6px 14px;
         }
-        .pp-meta-pill a { color: #111; text-decoration: none; font-weight: 600; }
+        .pp-meta-pill a { color: #7c3aed; text-decoration: none; font-weight: 600; }
         .pp-meta-pill a:hover { text-decoration: underline; }
 
-        .pp-tabs { display: flex; border-bottom: 1px solid #e8e7e4; margin-top: 24px; }
+        .pp-tabs { display: flex; border-bottom: 1px solid rgba(26,5,51,0.08); margin-top: 40px; }
         .pp-tab {
-          font-family: 'DM Sans', sans-serif;
-          font-size: 13.5px; font-weight: 500;
-          color: #999; background: none; border: none;
-          padding: 12px 20px; cursor: pointer;
+          font-family: 'Lora', serif;
+          font-size: 17px; font-weight: 500;
+          color: #bbb; background: none; border: none;
+          padding: 16px 24px; cursor: pointer;
           position: relative; transition: color 0.2s; line-height: 1;
         }
-        .pp-tab.active { color: #111; font-weight: 700; }
+        .pp-tab.active { color: #1a0533; font-weight: 700; }
         .pp-tab.active::after {
           content: ''; position: absolute;
           bottom: -1px; left: 0; right: 0;
-          height: 2px; background: #111;
+          height: 2px; background: #7c3aed;
           border-radius: 2px 2px 0 0;
         }
-        .pp-tab:hover:not(.active) { color: #555; }
+        .pp-tab:hover:not(.active) { color: #7c3aed; }
 
-        .pp-section-label {
-          font-size: 11px; font-weight: 700;
-          text-transform: uppercase; letter-spacing: 0.09em;
-          color: #aaa; margin: 28px 0 12px;
+        .pp-section-label { font-size: 13px !important;
+          font-size: 13px; font-weight: 700;
+          text-transform: uppercase; letter-spacing: 0.1em;
+          color: #9879d4; margin: 44px 0 18px;
         }
 
-        .club-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .club-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
         @media (max-width: 600px) { .club-grid { grid-template-columns: 1fr; } }
 
         .club-card {
-          background: #fff; border: 1px solid #ebebeb;
-          border-radius: 14px; padding: 16px 18px;
+          background: #fff;
+          border: 2px solid rgba(124,58,237,0.1);
+          border-radius: 22px; padding: 30px 32px;
           display: flex; align-items: flex-start; gap: 14px;
           transition: box-shadow 0.2s, transform 0.15s, border-color 0.2s;
           position: relative;
         }
-        .club-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.07); transform: translateY(-1px); border-color: #ddd; }
-
-        .club-icon-wrap {
-          width: 42px; height: 42px; border-radius: 11px;
-          display: flex; align-items: center; justify-content: center;
-          font-size: 20px; flex-shrink: 0;
+        .club-card:hover {
+          box-shadow: 0 8px 24px rgba(26,5,51,0.08);
+          transform: translateY(-2px);
+          border-color: rgba(124,58,237,0.15);
         }
+
         .club-name {
-          font-family: 'Fraunces', serif; font-size: 15px; font-weight: 700;
-          color: #0a0a0a; letter-spacing: -0.01em; line-height: 1.25; margin: 0;
+          font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700;
+          color: #1a0533; letter-spacing: -0.02em; line-height: 1.3; margin: 0;
         }
-        .club-cat {
-          display: inline-block; font-size: 10.5px; font-weight: 600;
-          text-transform: uppercase; letter-spacing: 0.06em;
-          border-radius: 4px; padding: 2px 7px; margin-top: 4px;
+        
+          display: inline-block; font-size: 10px; font-weight: 700;
+          text-transform: uppercase; letter-spacing: 0.07em;
+          border-radius: 5px; padding: 2px 7px; margin-top: 5px;
         }
-        .club-members { font-size: 12px; color: #aaa; margin-top: 6px; font-weight: 500; }
+        .club-members { font-size: 16px; color: #aaa; margin-top: 7px; font-weight: 500; }
 
-        .club-leave-btn {
-          position: absolute; top: 12px; right: 14px;
-          font-size: 11.5px; font-weight: 600;
-          background: none; border: 1px solid #e8e8e8;
+        
+          position: absolute; top: 14px; right: 16px;
+          font-size: 11px; font-weight: 600;
+          background: none; border: 1px solid rgba(26,5,51,0.1);
           border-radius: 6px; padding: 4px 10px;
           color: #aaa; cursor: pointer;
           transition: border-color 0.2s, color 0.2s, background 0.2s; line-height: 1;
+          font-family: 'Lora', serif;
         }
-        .club-leave-btn:hover { border-color: #f5c6c6; color: #c0392b; background: #fff5f5; }
+        .club-leave-btn:hover { border-color: #fca5a5; color: #dc2626; background: #fef2f2; }
 
-        .club-join-btn {
-          position: absolute; top: 12px; right: 14px;
-          font-size: 11.5px; font-weight: 600;
-          background: #111; border: none;
+        
+          position: absolute; top: 14px; right: 16px;
+          font-size: 11px; font-weight: 600;
+          background: #1a0533; border: none;
           border-radius: 6px; padding: 4px 10px;
-          color: #fff; cursor: pointer; transition: background 0.2s; line-height: 1;
+          color: #fff; cursor: pointer;
+          transition: background 0.2s; line-height: 1;
+          font-family: 'Lora', serif;
         }
-        .club-join-btn:hover { background: #333; }
+        .club-join-btn:hover { background: #6d28d9; box-shadow: 0 4px 14px rgba(124,58,237,0.4); }
 
-        .pp-empty { padding: 48px 0; text-align: center; color: #ccc; font-size: 14px; }
-        .pp-empty-icon { font-size: 32px; opacity: 0.35; margin-bottom: 10px; }
+        .pp-empty { padding: 52px 0; text-align: center; color: #ccc; font-size: 14px; font-family: 'Lora', serif; }
+        .pp-empty-icon {
+          width: 56px; height: 56px; border-radius: 16px;
+          background: #f8f4ff; border: 1px solid rgba(124,58,237,0.1);
+          display: flex; align-items: center; justify-content: center;
+          margin: 0 auto 14px; font-size: 24px;
+        }
 
         .pp-activity-item {
           display: flex; align-items: center; gap: 14px;
-          padding: 14px 18px; background: #fff;
-          border: 1px solid #ebebeb; border-radius: 12px; margin-bottom: 10px;
+          padding: 18px 22px; background: #fff;
+          border: 2px solid rgba(124,58,237,0.1);
+          border-radius: 16px; margin-bottom: 16px;
+          transition: border-color 0.2s;
         }
+        .pp-activity-item:hover { border-color: rgba(124,58,237,0.15); }
+
         .pp-about-item {
           display: flex; align-items: center; gap: 14px;
-          padding: 14px 18px; background: #fff;
-          border: 1px solid #ebebeb; border-radius: 12px; margin-bottom: 10px;
+          padding: 18px 22px; background: #fff;
+          border: 2px solid rgba(124,58,237,0.1);
+          border-radius: 16px; margin-bottom: 16px;
+          transition: border-color 0.2s;
         }
+        .pp-about-item:hover { border-color: rgba(124,58,237,0.15); }
 
         .pp-modal-overlay {
           position: fixed; inset: 0;
-          background: rgba(0,0,0,0.35);
-          backdrop-filter: blur(4px);
+          background: rgba(13,1,24,0.4);
+          backdrop-filter: blur(6px);
           z-index: 3000;
           display: flex; align-items: center; justify-content: center;
           padding: 20px; animation: pp-fadeIn 0.15s ease;
         }
         .pp-modal {
-          background: #fff; border-radius: 18px; padding: 32px;
+          background: #fff; border-radius: 20px; padding: 36px;
           width: 100%; max-width: 480px; max-height: 90vh; overflow-y: auto;
-          box-shadow: 0 24px 80px rgba(0,0,0,0.18);
+          box-shadow: 0 32px 80px rgba(26,5,51,0.2);
           animation: pp-slideUp 0.2s cubic-bezier(.22,.68,0,1.2);
+          border: 1px solid rgba(124,58,237,0.1);
         }
-        .pp-modal-title {
-          font-family: 'Fraunces', serif; font-size: 20px; font-weight: 800;
-          color: #0a0a0a; letter-spacing: -0.02em; margin: 0 0 24px;
+        
+          font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 800;
+          color: #1a0533; letter-spacing: -0.03em; margin: 0 0 28px;
         }
         .pp-field { margin-bottom: 16px; }
-        .pp-label {
-          display: block; font-size: 11.5px; font-weight: 700;
-          text-transform: uppercase; letter-spacing: 0.07em; color: #aaa; margin-bottom: 6px;
+        
+          display: block; font-size: 13px; font-weight: 700;
+          text-transform: uppercase; letter-spacing: 0.08em;
+          color: #9879d4; margin-bottom: 7px;
+          font-family: 'Lora', serif;
         }
-        .pp-input {
-          width: 100%; font-family: 'DM Sans', sans-serif;
-          font-size: 14px; font-weight: 500; color: #111;
-          background: #fafafa; border: 1.5px solid #e8e8e8;
-          border-radius: 9px; padding: 10px 13px; outline: none;
-          transition: border-color 0.2s, background 0.2s;
+        
+          width: 100%; font-family: 'Lora', serif;
+          font-size: 16px; font-weight: 500; color: #1a0533;
+          background: #fdfcff;
+          border: 1.5px solid rgba(124,58,237,0.15);
+          border-radius: 9px; padding: 11px 14px; outline: none;
+          transition: border-color 0.2s, box-shadow 0.2s;
         }
-        .pp-input:focus { border-color: #aaa; background: #fff; }
-        .pp-textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+        .pp-input:focus {
+          border-color: #7c3aed; background: #f0ebff;
+          box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+        }
+        .pp-textarea { resize: vertical; min-height: 80px; line-height: 1.65; }
 
-        .pp-modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 24px; }
+        .pp-modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 40px; }
         .pp-cancel-btn {
-          font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
-          padding: 9px 18px; border-radius: 8px;
-          border: 1.5px solid #e0e0e0; background: #fff; color: #666;
-          cursor: pointer; transition: border-color 0.2s;
+          font-family: 'Lora', serif; font-size: 13px; font-weight: 600;
+          padding: 10px 20px; border-radius: 8px;
+          border: 1.5px solid rgba(26,5,51,0.12); background: #fff; color: #888;
+          cursor: pointer; transition: border-color 0.2s, color 0.2s;
         }
-        .pp-cancel-btn:hover { border-color: #bbb; }
+        .pp-cancel-btn:hover { border-color: #aaa; color: #555; }
         .pp-save-btn {
-          font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700;
-          padding: 9px 22px; border-radius: 8px;
-          border: none; background: #111; color: #fff;
-          cursor: pointer; transition: background 0.2s, transform 0.15s;
+          font-family: 'Lora', serif; font-size: 13px; font-weight: 700;
+          padding: 10px 24px; border-radius: 8px;
+          border: none; background: #1a0533; color: #fff;
+          cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
         }
-        .pp-save-btn:hover { background: #333; transform: translateY(-1px); }
+        .pp-save-btn:hover {
+          background: #7c3aed;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 16px rgba(124,58,237,0.35);
+        }
       `}</style>
 
       <div className="pp-root">
+        {/* Top accent */}
+        <div style={{ height: "2px", background: "linear-gradient(90deg, #4c1d95, #7c3aed, #c4b5fd, #7c3aed, #4c1d95)" }} />
 
-        {/* ── Video Banner ── */}
+        {/* Banner */}
         <div className="pp-banner">
           <a href="/page" className="pp-back-btn">
-            <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+            <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
               <polyline points="15 18 9 12 15 6"/>
             </svg>
             Back
@@ -353,7 +363,7 @@ export default function ProfilePage({ user = MOCK_USER }) {
               }
             </div>
             <button className="pp-edit-btn" onClick={() => { setEditData({ ...saved }); setEditOpen(true); }}>
-              <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
                 <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
               </svg>
@@ -368,13 +378,13 @@ export default function ProfilePage({ user = MOCK_USER }) {
           <div className="pp-meta">
             {saved.location && (
               <span className="pp-meta-pill">
-                <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <svg width="11" height="11" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 {saved.location}
               </span>
             )}
             {saved.website && (
               <span className="pp-meta-pill">
-                <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <svg width="11" height="11" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                 <a href={saved.website} target="_blank" rel="noopener noreferrer">
                   {saved.website.replace(/^https?:\/\//, "")}
                 </a>
@@ -382,7 +392,7 @@ export default function ProfilePage({ user = MOCK_USER }) {
             )}
             {saved.joinedDate && (
               <span className="pp-meta-pill">
-                <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <svg width="11" height="11" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                 Joined {saved.joinedDate}
               </span>
             )}
@@ -408,13 +418,15 @@ export default function ProfilePage({ user = MOCK_USER }) {
             <div>
               <div className="pp-section-label">Enrolled in ({enrolledClubs.length})</div>
               {enrolledClubs.length === 0 ? (
-                <div className="pp-empty"><div className="pp-empty-icon">🏛️</div><div>Not enrolled in any clubs yet</div></div>
+                <div className="pp-empty">
+                  <div className="pp-empty-icon">🏛️</div>
+                  Not enrolled in any clubs yet
+                </div>
               ) : (
                 <div className="club-grid">
                   {enrolledClubs.map((club) => (
                     <div key={club.id} className="club-card">
-                      <div className="club-icon-wrap" style={{ background: club.color }}>{club.icon}</div>
-                      <div style={{ flex: 1, minWidth: 0, paddingRight: "56px" }}>
+                      <div style={{ flex: 1, minWidth: 0, paddingRight: "60px" }}>
                         <div className="club-name">{club.name}</div>
                         <span className="club-cat" style={{ background: club.color, color: club.accent }}>{club.category}</span>
                         <div className="club-members">{club.members.toLocaleString()} members</div>
@@ -424,15 +436,18 @@ export default function ProfilePage({ user = MOCK_USER }) {
                   ))}
                 </div>
               )}
+
               <div className="pp-section-label">Following ({followedClubs.length})</div>
               {followedClubs.length === 0 ? (
-                <div className="pp-empty"><div className="pp-empty-icon">🔍</div><div>Not following any clubs</div></div>
+                <div className="pp-empty">
+                  <div className="pp-empty-icon">🔍</div>
+                  Not following any clubs
+                </div>
               ) : (
                 <div className="club-grid">
                   {followedClubs.map((club) => (
                     <div key={club.id} className="club-card">
-                      <div className="club-icon-wrap" style={{ background: club.color }}>{club.icon}</div>
-                      <div style={{ flex: 1, minWidth: 0, paddingRight: "56px" }}>
+                      <div style={{ flex: 1, minWidth: 0, paddingRight: "60px" }}>
                         <div className="club-name">{club.name}</div>
                         <span className="club-cat" style={{ background: club.color, color: club.accent }}>{club.category}</span>
                         <div className="club-members">{club.members.toLocaleString()} members</div>
@@ -454,9 +469,9 @@ export default function ProfilePage({ user = MOCK_USER }) {
                 { icon: "💻", text: "Joined Tech Builders MN", time: "3 weeks ago" },
               ].map((item, i) => (
                 <div key={i} className="pp-activity-item">
-                  <span style={{ fontSize: "20px" }}>{item.icon}</span>
-                  <span style={{ flex: 1, fontSize: "14px", color: "#333", fontWeight: 500 }}>{item.text}</span>
-                  <span style={{ fontSize: "12px", color: "#bbb", whiteSpace: "nowrap" }}>{item.time}</span>
+                  <span style={{ fontSize: "18px" }}>{item.icon}</span>
+                  <span style={{ flex: 1, fontSize: "18px", color: "#333", fontWeight: 500, fontFamily: "'Lora', serif" }}>{item.text}</span>
+                  <span style={{ fontSize: "15px", color: "#bbb", whiteSpace: "nowrap", fontFamily: "'Lora', serif" }}>{item.time}</span>
                 </div>
               ))}
             </div>
@@ -472,12 +487,12 @@ export default function ProfilePage({ user = MOCK_USER }) {
                 { label: "Website", value: saved.website, icon: "🌐", link: true },
               ].map(({ label, value, icon, link }) => value ? (
                 <div key={label} className="pp-about-item">
-                  <span style={{ fontSize: "18px", width: "24px", textAlign: "center" }}>{icon}</span>
+                  <span style={{ fontSize: "17px", width: "22px", textAlign: "center" }}>{icon}</span>
                   <div>
-                    <div style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.07em", color: "#bbb", marginBottom: "2px" }}>{label}</div>
+                    <div style={{ fontSize: "14px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "#9879d4", marginBottom: "3px", fontFamily: "'Lora', serif" }}>{label}</div>
                     {link
-                      ? <a href={value} target="_blank" rel="noopener noreferrer" style={{ fontSize: "14px", fontWeight: 500, color: "#111", textDecoration: "none" }}>{value.replace(/^https?:\/\//, "")}</a>
-                      : <div style={{ fontSize: "14px", fontWeight: 500, color: "#222" }}>{value}</div>
+                      ? <a href={value} target="_blank" rel="noopener noreferrer" style={{ fontSize: "17px", fontWeight: 500, color: "#7c3aed", textDecoration: "none", fontFamily: "'Lora', serif" }}>{value.replace(/^https?:\/\//, "")}</a>
+                      : <div style={{ fontSize: "18px", fontWeight: 500, color: "#1a0533", fontFamily: "'Lora', serif" }}>{value}</div>
                     }
                   </div>
                 </div>

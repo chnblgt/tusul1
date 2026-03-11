@@ -3,114 +3,113 @@ export default function Footer() {
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,800&family=DM+Sans:wght@400;500;600&display=swap');
-        .footer-logo { font-family: 'Fraunces', serif; }
-        .footer-body { font-family: 'DM Sans', sans-serif; }
-        .footer-link {
-          color: #888;
+        .ft-logo { font-family: 'Fraunces', serif; }
+        .ft-body { font-family: 'DM Sans', sans-serif; }
+        .ft-link {
+          color: #a08ac0;
           text-decoration: none;
           font-size: 13px;
+          font-family: 'DM Sans', sans-serif;
+          font-weight: 500;
           transition: color 0.2s;
           display: block;
+          line-height: 1;
         }
-        .footer-link:hover { color: #fff; }
-        .social-btn {
-          width: 36px;
-          height: 36px;
-          border: 1px solid #333;
+        .ft-link:hover { color: #e9d5ff; }
+        .ft-social {
+          width: 36px; height: 36px;
+          border: 1px solid rgba(167,139,250,0.2);
           border-radius: 8px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          transition: all 0.2s;
-          font-size: 11px;
-          font-weight: 700;
-          color: #888;
-          text-decoration: none;
+          display: flex; align-items: center; justify-content: center;
+          cursor: pointer; transition: all 0.2s;
+          font-size: 11px; font-weight: 700;
+          color: #a08ac0; text-decoration: none;
+          font-family: 'DM Sans', sans-serif;
+          letter-spacing: 0.02em;
         }
-        .social-btn:hover {
-          border-color: #fff;
-          color: #fff;
+        .ft-social:hover {
+          border-color: #7c3aed;
+          color: #e9d5ff;
           transform: translateY(-2px);
+          background: rgba(124,58,237,0.15);
         }
       `}</style>
+
       <footer>
-        {/* Fade bridge */}
         <div style={{
-          height: "60px",
-          background: "linear-gradient(to bottom, #fafaf8, #0a0a0a)",
+          height: "100px",
+          background: "linear-gradient(to bottom, #ffffff, #0d0118)",
         }} />
 
-        <div style={{ background: "#0a0a0a" }}>
-          <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "48px 32px 40px" }}>
-
-            {/* Top row */}
-            <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: "48px", marginBottom: "48px" }}>
-              {/* Brand */}
+        <div style={{ background: "#0d0118" }}>
+          <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "52px 36px 44px" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: "56px", marginBottom: "52px" }}>
               <div>
-                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "16px" }}>
-                  <img src="/assets/logo_white.png" alt="Logo" width={32} height={32} style={{ borderRadius: "8px" }} />
-                  <span className="footer-logo" style={{ fontSize: "17px", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em" }}>
-                    Duguilan.mn
+                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "18px" }}>
+                  <img src="/assets/logo_white.png" alt="Logo" width={30} height={30} style={{ borderRadius: "7px" }} />
+                  <span className="ft-logo" style={{ fontSize: "17px", fontWeight: 800, letterSpacing: "-0.03em" }}>
+                    <span style={{ color: "#fff" }}>Duguilan</span><span style={{ color: "#white" }}>.mn</span>
                   </span>
                 </div>
-                <p style={{ color: "#666", fontSize: "13px", lineHeight: 1.7, maxWidth: "240px" }}>
-                  Your gateway to discovering clubs, events, and experiences across Mongolia.
+                <p style={{ color: "#7a6090", fontSize: "13px", lineHeight: 1.75, maxWidth: "220px", fontFamily: "'DM Sans', sans-serif", margin: "0 0 22px" }}>
+                  Discover clubs, events, and experiences across Mongolia.
                 </p>
-                <div style={{ display: "flex", gap: "8px", marginTop: "20px" }}>
-                  <a className="social-btn">FB</a>
-                  <a className="social-btn">IG</a>
-                  <a className="social-btn">TW</a>
+                <div style={{ display: "flex", gap: "8px" }}>
+                  <a className="ft-social">FB</a>
+                  <a className="ft-social">IG</a>
+                  <a className="ft-social">TW</a>
                 </div>
               </div>
-
-              {/* Quick links */}
               <div>
-                <h3 style={{ color: "#fff", fontSize: "12px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "16px" }}>
+                <h3 style={{
+                  color: "#5b3d8a", fontSize: "10px", fontWeight: 700,
+                  letterSpacing: "0.14em", textTransform: "uppercase",
+                  marginBottom: "20px", fontFamily: "'DM Sans', sans-serif",
+                }}>
                   Navigate
                 </h3>
-                <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
                   {["Home", "Categories", "Events", "About Us"].map(l => (
-                    <a key={l} href="#" className="footer-link">{l}</a>
+                    <a key={l} href="#" className="ft-link">{l}</a>
                   ))}
                 </div>
               </div>
-
-              {/* Contact */}
               <div>
-                <h3 style={{ color: "#fff", fontSize: "12px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: "16px" }}>
+                <h3 style={{
+                  color: "#5b3d8a", fontSize: "10px", fontWeight: 700,
+                  letterSpacing: "0.14em", textTransform: "uppercase",
+                  marginBottom: "20px", fontFamily: "'DM Sans', sans-serif",
+                }}>
                   Contact
                 </h3>
-                <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                  <span style={{ color: "#666", fontSize: "13px" }}>Ulaanbaatar, Mongolia</span>
-                  <span style={{ color: "#666", fontSize: "13px" }}>info@duguilan.mn</span>
-                  <span style={{ color: "#666", fontSize: "13px" }}>+976 99116769</span>
+                <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+                  {[
+                    "Ulaanbaatar, Mongolia",
+                    "info@duguilan.mn",
+                    "+976 99116769",
+                  ].map(t => (
+                    <span key={t} style={{ color: "#7a6090", fontSize: "13px", fontFamily: "'DM Sans', sans-serif", fontWeight: 500 }}>{t}</span>
+                  ))}
                 </div>
               </div>
             </div>
 
-            {/* Bottom row */}
             <div style={{
-              borderTop: "1px solid #1e1e1e",
-              paddingTop: "24px",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
+              borderTop: "1px solid rgba(124,58,237,0.12)",
+              paddingTop: "28px",
+              display: "flex", justifyContent: "space-between", alignItems: "center",
             }}>
-              <p style={{ color: "#444", fontSize: "12px" }}>
+              <p style={{ color: "#5b3d8a", fontSize: "12px", fontFamily: "'DM Sans', sans-serif", fontWeight: 500 }}>
                 © 2026 Duguilan.mn — School Project
               </p>
               <span style={{
-                fontSize: "11px",
-                color: "#333",
-                fontWeight: 600,
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
+                fontSize: "10.5px", color: "#5b3d8a",
+                fontWeight: 700, letterSpacing: "0.1em",
+                textTransform: "uppercase", fontFamily: "'DM Sans', sans-serif",
               }}>
-                Made in Mongolia 🇲🇳
+                Made by Enjoy Crew
               </span>
             </div>
-
           </div>
         </div>
       </footer>
